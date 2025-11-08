@@ -1,0 +1,54 @@
+import pygame
+
+from config import Config as config
+from entities.bullet import Bullet
+from utils.helpers import transparent_image
+
+
+class Plane(pygame.sprite.Sprite):
+    def __init__(self, speed, hp, ammo, damage, image):
+        super().__init__()
+        self.level = 1
+        self.perks = []
+        self.plane, self.rect, self.mask = transparent_image(image)
+        self.image = self.plane
+        #
+        self.ammo = 10
+        self.bullet = pygame.Rect(*self.rect.midright, 2, 10)
+        #
+        self.speed = speed
+        self.hp = hp
+        self.ammo = ammo
+        self.dmg = damage
+        self.shoot_delay = 250
+        self.last_shot = pygame.time.get_ticks()
+
+    def move(self, direction):
+        if direction == "right":
+            self.rect.x += self.speed
+        if direction == "left":
+            self.rect.x -= self.speed
+        if direction == "top":
+            self.rect.y -= self.speed
+        if direction == "bottom":
+            self.rect.y += self.speed
+
+        self.rect.clamp_ip(config.v_screen.get_rect())
+
+    def shoot(self, bullets_group):
+        now = pygame.time.get_ticks()
+        if now - self.last_shot > self.shoot_delay:
+            self.last_shot = now
+            bullet = Bullet(self.rect.centerx, self.rect.top, 12)
+            bullets_group.add(bullet)
+
+    def check_offest(self, target):
+        offset = (
+            self.rect.x - target.rect.x,
+            self.rect.y - target.rect.y,
+        )
+
+        return offset
+
+    def blitme(self, surface: pygame.SurfaceType):
+        surface.blit(self.plane, self.rect)

@@ -1,0 +1,36 @@
+import os
+
+import pygame
+
+from config import Config as config
+
+
+def show_fps():
+    fps = int(config.clock.get_fps())
+    fps_text = pygame.font.SysFont(None, 16).render(f"FPS: {fps}", True, (255, 0, 255))
+    config.v_screen.blit(
+        fps_text, (config.VIRTUAL_WIDTH * 0.9, config.VIRTUAL_HEIGHT * 0.05)
+    )
+
+
+def load_image(directory, image_name):
+    path = os.path.join(
+        os.path.dirname(__file__), f"../../assets/{directory}/{image_name}"
+    )
+    image = pygame.image.load(path)
+
+    return image
+
+
+def scale_image(image, x, y):
+    return pygame.transform.scale(image, (x, y))
+
+
+def transparent_image(img):
+    image = img.convert_alpha()
+    image_mask = pygame.mask.from_surface(image)
+    bbox = image_mask.get_bounding_rects()[0]
+    image = image.subsurface(bbox).copy()
+    image_rect = image.get_rect()
+
+    return (image, image_rect, image_mask)
