@@ -20,7 +20,7 @@ class Plane(pygame.sprite.Sprite):
         self.hp = hp
         self.ammo = ammo
         self.dmg = damage
-        self.shoot_delay = 250
+        self.shoot_delay = 200
         self.last_shot = pygame.time.get_ticks()
 
     def move(self, direction):
@@ -39,8 +39,9 @@ class Plane(pygame.sprite.Sprite):
         now = pygame.time.get_ticks()
         if now - self.last_shot > self.shoot_delay:
             self.last_shot = now
-            bullet = Bullet(self.rect.centerx, self.rect.top, 12)
-            bullets_group.add(bullet)
+            bullet_right = Bullet(self.rect.midright[0] - 5, self.rect.top + 20, 12)
+            bullet_left = Bullet(self.rect.midleft[0] + 5, self.rect.top + 20, 12)
+            bullets_group.add(bullet_left, bullet_right)
 
     def check_offest(self, target):
         offset = (
