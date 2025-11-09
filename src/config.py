@@ -11,6 +11,7 @@ class Config:
 
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     v_screen = pygame.Surface((VIRTUAL_WIDTH, VIRTUAL_HEIGHT))
+    v_screen_rect = v_screen.get_rect()
 
     display_info = pygame.display.Info()
     REAL_WIDTH, REAL_HEIGHT = display_info.current_w, display_info.current_h

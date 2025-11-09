@@ -23,25 +23,34 @@ class Plane(pygame.sprite.Sprite):
         self.shoot_delay = 200
         self.last_shot = pygame.time.get_ticks()
 
-    def move(self, direction):
-        if direction == "right":
-            self.rect.x += self.speed
-        if direction == "left":
-            self.rect.x -= self.speed
-        if direction == "top":
+    def move(self, keys):
+        if keys[pygame.K_w]:
             self.rect.y -= self.speed
-        if direction == "bottom":
+        if keys[pygame.K_s]:
             self.rect.y += self.speed
+        if keys[pygame.K_a]:
+            self.rect.x -= self.speed
+        if keys[pygame.K_d]:
+            self.rect.x += self.speed
 
         self.rect.clamp_ip(config.v_screen.get_rect())
 
-    def shoot(self, bullets_group):
-        now = pygame.time.get_ticks()
-        if now - self.last_shot > self.shoot_delay:
-            self.last_shot = now
-            bullet_right = Bullet(self.rect.midright[0] - 5, self.rect.top + 20, 12)
-            bullet_left = Bullet(self.rect.midleft[0] + 5, self.rect.top + 20, 12)
-            bullets_group.add(bullet_left, bullet_right)
+    def shoot(self, bullets_group, mouse_buttons):
+        if mouse_buttons[0]:
+            now = pygame.time.get_ticks()
+            if now - self.last_shot > self.shoot_delay:
+                self.last_shot = now
+                bullet_right = Bullet(self.rect.midright[0] - 5, self.rect.top + 20, 12)
+                bullet_left = Bullet(self.rect.midleft[0] + 5, self.rect.top + 20, 12)
+                bullets_group.add(bullet_left, bullet_right)
+
+    def take_damage(self, hits):
+        for enemy, bullet_list in hits.items():
+            for bullet in bullet_list:
+                bullet.kill()
+                enemy.hp -= self.dmg
+                if enemy.hp <= 0:
+                    enemy.kill()
 
     def check_offset(self, target):
         offset = (

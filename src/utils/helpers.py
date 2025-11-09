@@ -34,3 +34,12 @@ def transparent_image(img):
     image_rect = image.get_rect()
 
     return (image, image_rect, image_mask)
+
+def scale_n_build_screen():
+    scaled_surface = pygame.transform.smoothscale(
+        config.v_screen, (config.scaled_width, config.scaled_height)
+    )
+    config.screen.fill((0, 0, 0))
+    config.screen.blit(scaled_surface, (config.offset_x, config.offset_y))
+    pygame.display.flip()
+    config.clock.tick(config.FPS)
