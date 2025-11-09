@@ -19,7 +19,7 @@ def main(state="P"):
 
 def game_loop():
     # Player
-    main_plane_img = scale_image(load_image("graphics", "plane-1.png"), 30, 55)
+    main_plane_img = scale_image(load_image("graphics", "plane-1.webp"), 30, 55)
     main_plane = Plane(8, 10, 250, 1, main_plane_img)
 
     # center the plane in lower center
@@ -33,7 +33,7 @@ def game_loop():
 
     # Enemies
     enemy_plane_img = pygame.transform.rotate(
-        scale_image(load_image("graphics", "enemy-2.png"), 30, 55), 180
+        scale_image(load_image("graphics", "enemy-2.webp"), 30, 55), 180
     )
     enemy_plane = Plane(6, 10, 999, 1, enemy_plane_img)
 
