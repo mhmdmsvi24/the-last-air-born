@@ -18,20 +18,23 @@ def main(state="P"):
 
 
 def game_loop():
-    all_sprites = pygame.sprite.Group()
-    bullets = pygame.sprite.Group()
 
     main_plane_img = scale_image(load_image("graphics", "plane-1.png"), 30, 55)
     main_plane = Plane(8, 10, 250, 1, main_plane_img)
     main_plane.rect.center = config.v_screen.get_rect().center
-    all_sprites.add(main_plane)
+    bullets = pygame.sprite.Group()
 
+    player_group = pygame.sprite.GroupSingle(main_plane)
+    player_group.add(main_plane)
+
+    enemies_group = pygame.sprite.Group()
     enemy_plane_img = pygame.transform.rotate(
         scale_image(load_image("graphics", "enemy-2.png"), 30, 55), 180
     )
     enemy_plane = Plane(6, 1, 999, 1, enemy_plane_img)
     enemy_plane.rect.centerx = config.v_screen.get_rect().centerx
-    all_sprites.add(enemy_plane)
+    enemy_bullets = pygame.sprite.Group()
+    enemies_group.add(enemy_plane)
 
     while True:
         config.v_screen.fill((0, 0, 0))
@@ -55,13 +58,20 @@ def game_loop():
         if mouse_buttons[0]:
             main_plane.shoot(bullets)
 
-        main_plane_to_enemy_offset = main_plane.check_offest(enemy_plane)
-        if main_plane.mask.overlap(enemy_plane.mask, main_plane_to_enemy_offset):
-            main("L")
-            break
-
         bullets.update()
-        all_sprites.draw(config.v_screen)
+
+        hits = pygame.sprite.groupcollide(
+            enemies_group, bullets, False, True, pygame.sprite.collide_mask
+        )
+
+        for enemy, bullet_list in hits.items():
+            for _ in bullet_list:
+                enemy.hp -= main_plane.dmg
+                if enemy.hp <= 0:
+                    enemy.kill()
+
+        player_group.draw(config.v_screen)
+        enemies_group.draw(config.v_screen)
         bullets.draw(config.v_screen)
 
         show_fps()

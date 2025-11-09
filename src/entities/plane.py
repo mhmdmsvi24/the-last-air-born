@@ -43,7 +43,7 @@ class Plane(pygame.sprite.Sprite):
             bullet_left = Bullet(self.rect.midleft[0] + 5, self.rect.top + 20, 12)
             bullets_group.add(bullet_left, bullet_right)
 
-    def check_offest(self, target):
+    def check_offset(self, target):
         offset = (
             self.rect.x - target.rect.x,
             self.rect.y - target.rect.y,
