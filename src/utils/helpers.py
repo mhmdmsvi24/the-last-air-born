@@ -42,4 +42,14 @@ def scale_n_build_screen():
     config.screen.fill((0, 0, 0))
     config.screen.blit(scaled_surface, (config.offset_x, config.offset_y))
     pygame.display.flip()
-    config.clock.tick(config.FPS)
+
+
+def load_spritesheet(path, name, frame_width, frame_height, num_frames):
+    sheet = load_image(path, name).convert_alpha()
+    frames = []
+    for i in range(num_frames):
+        frame = sheet.subsurface(
+            pygame.Rect(i * frame_width, 0, frame_width, frame_height)
+        )
+        frames.append(frame)
+    return frames
