@@ -64,3 +64,10 @@ def get_guns():
         data = json.load(f)
 
     return data
+
+
+def load_json(file_path):
+    with file_path.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    return data
