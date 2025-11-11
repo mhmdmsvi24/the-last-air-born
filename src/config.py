@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pygame
 
 
@@ -24,3 +26,5 @@ class Config:
 
     offset_x = (REAL_WIDTH - scaled_width) // 2
     offset_y = (REAL_HEIGHT - scaled_height) // 2
+
+    root_dir = Path(__file__).resolve().parent.parent

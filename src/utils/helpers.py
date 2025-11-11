@@ -1,3 +1,4 @@
+import json
 import os
 
 import pygame
@@ -35,6 +36,7 @@ def transparent_image(img):
 
     return (image, image_rect, image_mask)
 
+
 def scale_n_build_screen():
     scaled_surface = pygame.transform.smoothscale(
         config.v_screen, (config.scaled_width, config.scaled_height)
@@ -53,3 +55,12 @@ def load_spritesheet(path, name, frame_width, frame_height, num_frames):
         )
         frames.append(frame)
     return frames
+
+
+def get_guns():
+    data_file = config.root_dir / "src" / "data" / "guns.json"
+
+    with data_file.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    return data
