@@ -1,17 +1,20 @@
 ## TODO
-- [ ] main menu and restart functionality
-- [ ] HUD and player live states
+- [ ] HUD and player live states (XP, COIN, LEVEL, HP, SCORE, ...)
 - [ ] Perks & Upgrades
-- [ ] path finding rockets
 - [ ] inifinte level multiplier after max level
-- [ ] shooting and hitting sprites
 - [ ] planes re-design
-- [ ] boss fights
-- [ ] basic enemy waves and levels
+- [ ] boss 1
+- [ ] helicopter enemy type with pathfinding/basic rockets
+- [ ] XP counter
+- [ ] base talent tree
+- [ ] different enemy position orientation
+- [ ] main menu and restart functionality
 ## IN PROGRESS
 ## DONE
+- [x] basic enemy waves
 - [x] complete basic implementation of enemy and player classes
 - [x] planes autoshoot mechanics
 - [x] plane death animation
 - [x] basic gun full implementation
 - [x] shooting with slight angel
+- [x] shooting and hitting sprites

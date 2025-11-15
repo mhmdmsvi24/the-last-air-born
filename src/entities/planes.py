@@ -35,13 +35,14 @@ class Plane(pygame.sprite.Sprite):
                 bullet = self.gun.create_bullet((self.rect.midtop[0], self.rect.top))
                 self.bullets_group.add(bullet)
 
-    def take_damage(self, hits, explosion_group, damage):
-        for enemy, bullet_list in hits.items():
-            for bullet in bullet_list:
-                bullet.kill()
-                enemy.hp -= damage
-                if enemy.hp <= 0:
-                    enemy.die(explosion_group)
+    def take_damage(self, bullet_list, explosion_group, damage):
+        for bullet in bullet_list:
+            bullet.kill()
+            self.hp -= damage
+
+            if self.hp <= 0:
+                self.die(explosion_group)
+                return
 
     def check_offset(self, target):
         offset = (
@@ -59,9 +60,6 @@ class Plane(pygame.sprite.Sprite):
         explosion_group.add(explosion)
         self.is_alive = False
         self.kill()
-
-    def blitme(self):
-        self.surface.blit(self.plane, self.rect)
 
 
 class Player(Plane):
@@ -87,6 +85,24 @@ class Enemy(Plane):
         super().__init__(surface, speed, hp, image)
         self.gun = BasicGun(enemy=True)
 
+        # --- movement animation / lerp ---
+        self.start_x = None
+        self.start_y = None
+        self.target_x = None
+        self.target_y = None
+
+        self.travel_duration = 3000  # milliseconds (3 seconds)
+        self.travel_start_time = None
+        self.reached_target = False
+
+    def set_path(self, start_pos, target_pos):
+        self.start_x, self.start_y = start_pos
+        self.target_x, self.target_y = target_pos
+
+        self.rect.center = start_pos
+        self.travel_start_time = pygame.time.get_ticks()
+        self.reached_target = False
+
     def shoot(self):
         now = pygame.time.get_ticks()
 
@@ -96,3 +112,22 @@ class Enemy(Plane):
                 (self.rect.midbottom[0] + 2, self.rect.bottom), "bottom"
             )
             self.bullets_group.add(bullet)
+
+    def auto_move(self):
+        if self.reached_target:
+            return
+
+        now = pygame.time.get_ticks()
+        elapsed = now - self.travel_start_time
+
+        # ratio from 0 → 1
+        t = elapsed / self.travel_duration
+        if t >= 1:
+            t = 1
+            self.reached_target = True
+
+        # linear interpolation
+        new_x = self.start_x + (self.target_x - self.start_x) * t
+        new_y = self.start_y + (self.target_y - self.start_y) * t
+
+        self.rect.center = (new_x, new_y)

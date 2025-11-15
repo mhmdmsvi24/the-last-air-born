@@ -7,7 +7,7 @@ from utils.helpers import load_json
 
 class BasicGun:
     def __init__(self, enemy=False):
-        self.gun_level = 10
+        self.gun_level = 1
         self.current_gun = load_json(config.root_dir / "src" / "data" / "guns.json")[
             "basic_gun"
         ][f"{self.gun_level}"]

@@ -71,3 +71,22 @@ def load_json(file_path):
         data = json.load(f)
 
     return data
+
+
+def planes_to_row_cols(planes_width, planes_count, spacing, padding):
+    screen_width = config.VIRTUAL_WIDTH
+
+    gap = spacing * (planes_count - 1)
+    real_padding = padding * 2
+
+    total_width = planes_width * planes_count + gap + real_padding
+
+    rows = 1
+    cols = planes_count
+
+    while total_width > screen_width:
+        cols -= 1
+        total_width = planes_width * cols + ((cols * spacing)) + (padding * 2)
+        rows += 1
+
+    return (rows, cols)

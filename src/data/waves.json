@@ -1,0 +1,102 @@
+{
+    "1": {
+        "enemies_count": 3,
+        "enemies_level": 1,
+        "enemy_type": "basic_plane"
+    },
+    "2": {
+        "enemies_count": 4,
+        "enemies_level": 1,
+        "enemy_type": "basic_plane"
+    },
+    "3": {
+        "enemies_count": 5,
+        "enemies_level": 1,
+        "enemy_type": "basic_plane"
+    },
+    "4": {
+        "enemies_count": 6,
+        "enemies_level": 2,
+        "enemy_type": "basic_plane"
+    },
+    "5": {
+        "enemies_count": 1,
+        "enemies_level": 3,
+        "enemy_type": "boss_1"
+    },
+    "6": {
+        "enemies_count": 6,
+        "enemies_level": 3,
+        "enemy_type": "basic_plane"
+    },
+    "7": {
+        "enemies_count": 7,
+        "enemies_level": 4,
+        "enemy_type": "basic_plane"
+    },
+    "8": {
+        "enemies_count": 7,
+        "enemies_level": 4,
+        "enemy_type": "basic_heli"
+    },
+    "9": {
+        "enemies_count": 8,
+        "enemies_level": 5,
+        "enemy_type": "basic_heli"
+    },
+    "10": {
+        "enemies_count": 1,
+        "enemies_level": 6,
+        "enemy_type": "boss_2"
+    },
+    "11": {
+        "enemies_count": 8,
+        "enemies_level": 6,
+        "enemy_type": "basic_heli"
+    },
+    "12": {
+        "enemies_count": 9,
+        "enemies_level": 7,
+        "enemy_type": "basic_heli"
+    },
+    "13": {
+        "enemies_count": 9,
+        "enemies_level": 7,
+        "enemy_type": "basic_heli"
+    },
+    "14": {
+        "enemies_count": 10,
+        "enemies_level": 8,
+        "enemy_type": "basic_heli"
+    },
+    "15": {
+        "enemies_count": 1,
+        "enemies_level": 9,
+        "enemy_type": "boss_3"
+    },
+    "16": {
+        "enemies_count": 10,
+        "enemies_level": 9,
+        "enemy_type": "basic_heli"
+    },
+    "17": {
+        "enemies_count": 10,
+        "enemies_level": 10,
+        "enemy_type": "basic_heli"
+    },
+    "18": {
+        "enemies_count": 11,
+        "enemies_level": 10,
+        "enemy_type": "basic_heli"
+    },
+    "19": {
+        "enemies_count": 12,
+        "enemies_level": 11,
+        "enemy_type": "basic_heli"
+    },
+    "20": {
+        "enemies_count": 1,
+        "enemies_level": 12,
+        "enemy_type": "boss_4"
+    }
+}
