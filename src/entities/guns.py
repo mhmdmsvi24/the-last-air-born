@@ -18,7 +18,7 @@ class BasicGun:
         )
         self.bullet_size = self.current_gun["size"]
         self.shooting_delay = (
-            self.current_gun["delay"] if not enemy else self.current_gun["delay"] * 4
+            self.current_gun["delay"] if not enemy else self.current_gun["delay"] * 10
         )
         self.bullet_damage = (
             self.current_gun["damage"]
@@ -29,7 +29,7 @@ class BasicGun:
         self.bullet_speed = (
             self.current_gun["speed"]
             if not enemy
-            else math.ceil(self.current_gun["speed"] / 2)
+            else math.ceil(self.current_gun["speed"] / 3)
         )
 
     def create_bullet(self, shooting_pos, direction="top"):

@@ -2,7 +2,7 @@ import pygame
 
 
 class Explosion(pygame.sprite.Sprite):
-    def __init__(self, pos, frames, speed=0.1):
+    def __init__(self, pos, frames, speed=8):
         super().__init__()
         self.frames = frames
         self.frame_index = 0

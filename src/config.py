@@ -9,7 +9,6 @@ class Config:
 
     font = pygame.font.SysFont(None, 18)
     clock = pygame.time.Clock()
-    FPS = 60
 
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     v_screen = pygame.Surface((VIRTUAL_WIDTH, VIRTUAL_HEIGHT))

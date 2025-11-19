@@ -1,9 +1,10 @@
+import math
+
 import pygame
 
 from config import Config as config
 from entities.animations import Explosion
-from entities.bullets import Bullet
-from entities.guns import BasicGun, DualBarrelGun, MiniGun
+from entities.guns import BasicGun
 from utils.helpers import load_spritesheet, transparent_image
 
 
@@ -68,15 +69,15 @@ class Player(Plane):
     def __init__(self, surface, speed, hp, image):
         super().__init__(surface, speed, hp, image)
 
-    def move(self, keys):
+    def move(self, keys, delta_time):
         if keys[pygame.K_w]:
-            self.rect.y -= self.speed
+            self.rect.y -= self.speed * delta_time
         if keys[pygame.K_s]:
-            self.rect.y += self.speed
+            self.rect.y += math.ceil(self.speed * delta_time)
         if keys[pygame.K_a]:
-            self.rect.x -= self.speed
+            self.rect.x -= self.speed * delta_time
         if keys[pygame.K_d]:
-            self.rect.x += self.speed
+            self.rect.x += math.ceil(self.speed * delta_time)
 
         self.rect.clamp_ip(config.v_screen.get_rect())
 

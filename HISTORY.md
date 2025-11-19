@@ -12,5 +12,6 @@
     - shooting with slight angel
 ## v0.2.1 -- 2025/11/15
     - basic enemy waves spawn
-## v0.2.2 -- 2025/11/19
+## v0.2.3 -- 2025/11/19
     - bullets disappearing after enemy death bug fixed
+    - delta time normalization fixed

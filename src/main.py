@@ -21,7 +21,7 @@ def main(state="P"):
 def game_loop():
     # Player
     main_plane_img = scale_image(load_image("graphics", "plane-1.webp"), 30, 55)
-    main_plane = Player(config.v_screen, 5, 1, main_plane_img)
+    main_plane = Player(config.v_screen, 150, 1, main_plane_img)
 
     # Position player
     main_plane.rect.bottom = config.v_screen_rect.bottom * 0.9
@@ -41,20 +41,20 @@ def game_loop():
     while True:
         config.v_screen.fill((0, 0, 0))
 
-        dt = config.clock.tick(config.FPS)
-        delta_time = dt / 16.67
+        dt = config.clock.tick()
+        delta_time = dt / 1000.0
 
         for event in pygame.event.get():
             terminate(event)
 
         # ---- Player Logic ----
         keys = pygame.key.get_pressed()
-        main_plane.move(keys)
+        main_plane.move(keys, delta_time)
 
         mouse = pygame.mouse.get_pressed()
         main_plane.shoot(mouse)
 
-        main_plane.bullets_group.update()
+        main_plane.bullets_group.update(delta_time)
 
         # ---- Enemy Updates ----
         enemies_current_group.update()
@@ -63,7 +63,7 @@ def game_loop():
             enemy_plane.shoot()
 
         for enemy_bullet in enemies_bullets_group:
-            enemy_bullet.update()
+            enemy_bullet.update(delta_time)
 
         # ---- Collision: Player → Enemy ----
         hits_on_enemies = pygame.sprite.groupcollide(

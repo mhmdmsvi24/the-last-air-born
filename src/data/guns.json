@@ -12,7 +12,7 @@
                 1,
                 6
             ],
-            "speed": 6,
+            "speed": 200,
             "delay": 300,
             "damage": 1,
             "velocity_variance": 0.15
