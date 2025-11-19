@@ -6,10 +6,12 @@ from utils.helpers import load_image, load_json, planes_to_row_cols, scale_image
 
 
 class EnemyManager:
-    def __init__(self):
+
+    def __init__(self, enemies_bullets_group):
         self.current_wave = 1
         self.waves_data = load_json(config.root_dir / "src" / "data" / "waves.json")
         self.current_wave_group = pygame.sprite.Group()
+        self.enemies_bullets_group = enemies_bullets_group
 
     def load_wave(self):
         enemies_wave_data = self.waves_data[f"{self.current_wave}"]
@@ -49,10 +51,11 @@ class EnemyManager:
                     return
 
                 enemy = Enemy(
-                    config.v_screen,  # surface
-                    3,  # speed
-                    enemies_hp,  # hp
-                    enemy_plane_img,  # image
+                    config.v_screen,
+                    3,
+                    enemies_hp,
+                    enemy_plane_img,
+                    self.enemies_bullets_group
                 )
 
                 target_x = start_x + col * (enemy_plane_width + spacing)

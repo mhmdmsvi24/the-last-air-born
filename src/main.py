@@ -31,7 +31,8 @@ def game_loop():
 
     # -----------------------------------------------------------------------------
     # Enemies
-    enemy_manager = EnemyManager()
+    enemies_bullets_group = pygame.sprite.Group()
+    enemy_manager = EnemyManager(enemies_bullets_group)
     enemy_manager.load_wave()
     enemies_current_group = enemy_manager.get_current_group()
 
@@ -60,7 +61,9 @@ def game_loop():
 
         for enemy_plane in enemies_current_group:
             enemy_plane.shoot()
-            enemy_plane.bullets_group.update()
+
+        for enemy_bullet in enemies_bullets_group:
+            enemy_bullet.update()
 
         # ---- Collision: Player → Enemy ----
         hits_on_enemies = pygame.sprite.groupcollide(

@@ -9,13 +9,14 @@ from utils.helpers import load_spritesheet, transparent_image
 
 class Plane(pygame.sprite.Sprite):
 
-    def __init__(self, surface: pygame.SurfaceType, speed, hp, image):
+    def __init__(self, surface, speed, hp, image):
         super().__init__()
         self.plane, self.rect, self.mask = transparent_image(image)
         self.image = self.plane
         self.surface = surface
         #
         self.gun = BasicGun()
+        # This bullet group is only for the main player
         self.bullets_group = pygame.sprite.Group()
         self.last_shot = pygame.time.get_ticks()
         #
@@ -63,7 +64,8 @@ class Plane(pygame.sprite.Sprite):
 
 
 class Player(Plane):
-    def __init__(self, surface: pygame.SurfaceType, speed, hp, image):
+
+    def __init__(self, surface, speed, hp, image):
         super().__init__(surface, speed, hp, image)
 
     def move(self, keys):
@@ -81,9 +83,10 @@ class Player(Plane):
 
 class Enemy(Plane):
 
-    def __init__(self, surface: pygame.SurfaceType, speed, hp, image):
+    def __init__(self, surface: pygame.SurfaceType, speed, hp, image, bullets_group):
         super().__init__(surface, speed, hp, image)
         self.gun = BasicGun(enemy=True)
+        self.bullets_group = bullets_group
 
         # --- movement animation / lerp ---
         self.start_x = None
