@@ -8,9 +8,10 @@
 - [ ] XP counter
 - [ ] base talent tree
 - [ ] different enemy position orientation
-- [ ] main menu and restart functionality
 ## IN PROGRESS
 ## DONE
+- [x] game state refactor and architecture
+- [x] main menu and restart functionality
 - [x] basic enemy waves
 - [x] complete basic implementation of enemy and player classes
 - [x] planes autoshoot mechanics

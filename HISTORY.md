@@ -2,7 +2,6 @@
 
 ## v0.1.0 -- 2025/11/09
     - Basic Mechanics like main player and collision detection
-
 ## v0.1.5 -- 2025/11/10
     - completed basic implementation of enemy and player mechanics
     - planes autoshoot mechancis
@@ -15,3 +14,6 @@
 ## v0.2.3 -- 2025/11/19
     - bullets disappearing after enemy death bug fixed
     - delta time normalization fixed
+## v0.2.5 -- 2025/11/21
+    - main menu and restart functionality
+    - game state refactor and architecture
