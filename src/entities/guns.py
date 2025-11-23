@@ -26,9 +26,13 @@ class BasicGun:
             enemy (bool): Whether this gun belongs to an enemy.
                 Enemy guns shoot slower, weaker, and slower-speed bullets.
         """
-        self.gun_level = 1
+        self.gun_level = 10
 
-        gun_data = load_json(config.root_dir / "src" / "data" / "guns.json")
+        if not enemy:
+            gun_data = load_json(config.root_dir / "src" / "data" / "player-guns.json")
+        else:
+            gun_data = load_json(config.root_dir / "src" / "data" / "enemy-guns.json")
+
         self.current_gun = gun_data["basic_gun"][str(self.gun_level)]
 
         # Bullet color (RGB)
@@ -39,18 +43,13 @@ class BasicGun:
         )
 
         # Core bullet attributes
-        self.bullet_size = int(self.current_gun["size"])
+        self.bullet_size = self.current_gun["size"]
         self.bullet_velocity_variance = float(self.current_gun["velocity_variance"])
 
         # Gun behavior varies if used by an enemy
-        if not enemy:
-            self.shooting_delay = int(self.current_gun["delay"])
-            self.bullet_damage = int(self.current_gun["damage"])
-            self.bullet_speed = float(self.current_gun["speed"])
-        else:
-            self.shooting_delay = int(self.current_gun["delay"] * 10)
-            self.bullet_damage = int(math.ceil(self.current_gun["damage"] / 2))
-            self.bullet_speed = float(math.ceil(self.current_gun["speed"] / 3))
+        self.shooting_delay = int(self.current_gun["delay"])
+        self.bullet_damage = int(self.current_gun["damage"])
+        self.bullet_speed = float(self.current_gun["speed"])
 
     def create_bullet(
         self, shooting_pos: Tuple[int, int], direction: str = "top"
@@ -75,8 +74,8 @@ class BasicGun:
             y=y,
             color=self.bullet_color,
             size=self.bullet_size,
-            speed=self.bullet_speed,
-            velocity_variance=self.bullet_velocity_variance,
+            bullet_speed=self.bullet_speed,
+            variance=self.bullet_velocity_variance,
             direction=direction,
         )
 

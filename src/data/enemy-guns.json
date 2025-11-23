@@ -1,0 +1,174 @@
+{
+    "basic_gun": {
+        "1": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 0
+            },
+            "size": [
+                0,
+                0,
+                1,
+                6
+            ],
+            "speed": 67,
+            "delay": 3000,
+            "damage": 1,
+            "velocity_variance": 0.075
+        },
+        "2": {
+            "color": {
+                "r": 255,
+                "g": 240,
+                "b": 60
+            },
+            "size": [
+                0,
+                0,
+                1,
+                7
+            ],
+            "speed": 72,
+            "delay": 2850,
+            "damage": 1,
+            "velocity_variance": 0.075
+        },
+        "3": {
+            "color": {
+                "r": 255,
+                "g": 220,
+                "b": 50
+            },
+            "size": [
+                0,
+                0,
+                1,
+                8
+            ],
+            "speed": 77,
+            "delay": 2700,
+            "damage": 2,
+            "velocity_variance": 0.0775
+        },
+        "4": {
+            "color": {
+                "r": 255,
+                "g": 200,
+                "b": 40
+            },
+            "size": [
+                0,
+                0,
+                1,
+                9
+            ],
+            "speed": 82,
+            "delay": 2550,
+            "damage": 2,
+            "velocity_variance": 0.08
+        },
+        "5": {
+            "color": {
+                "r": 255,
+                "g": 180,
+                "b": 30
+            },
+            "size": [
+                0,
+                0,
+                1,
+                10
+            ],
+            "speed": 87,
+            "delay": 2400,
+            "damage": 3,
+            "velocity_variance": 0.08
+        },
+        "6": {
+            "color": {
+                "r": 255,
+                "g": 140,
+                "b": 25
+            },
+            "size": [
+                0,
+                0,
+                1,
+                11
+            ],
+            "speed": 92,
+            "delay": 2250,
+            "damage": 3,
+            "velocity_variance": 0.08
+        },
+        "7": {
+            "color": {
+                "r": 255,
+                "g": 110,
+                "b": 20
+            },
+            "size": [
+                0,
+                0,
+                1,
+                12
+            ],
+            "speed": 97,
+            "delay": 2100,
+            "damage": 4,
+            "velocity_variance": 0.08
+        },
+        "8": {
+            "color": {
+                "r": 255,
+                "g": 80,
+                "b": 15
+            },
+            "size": [
+                0,
+                0,
+                2,
+                13
+            ],
+            "speed": 102,
+            "delay": 1950,
+            "damage": 4,
+            "velocity_variance": 0.0825
+        },
+        "9": {
+            "color": {
+                "r": 255,
+                "g": 50,
+                "b": 10
+            },
+            "size": [
+                0,
+                0,
+                2,
+                9
+            ],
+            "speed": 107,
+            "delay": 1800,
+            "damage": 5,
+            "velocity_variance": 0.085
+        },
+        "10": {
+            "color": {
+                "r": 255,
+                "g": 20,
+                "b": 5
+            },
+            "size": [
+                0,
+                0,
+                2,
+                10
+            ],
+            "speed": 112,
+            "delay": 1650,
+            "damage": 5,
+            "velocity_variance": 0.0875
+        }
+    }
+}

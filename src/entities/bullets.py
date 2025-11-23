@@ -1,5 +1,6 @@
 import math
 import random
+
 import pygame
 
 from config import Config as config
@@ -25,8 +26,8 @@ class Bullet(pygame.sprite.Sprite):
         self,
         x: float,
         y: float,
-        color: tuple[int, int, int, int],
-        size: tuple[int, int],
+        color: dict[str:int],
+        size: list[int],
         bullet_speed: float,
         variance: float,
         direction: str = "top",
@@ -37,7 +38,7 @@ class Bullet(pygame.sprite.Sprite):
             x (float): Initial X position.
             y (float): Initial Y position.
             color (tuple[int, int, int, int]): RGBA bullet color.
-            size (tuple[int, int]): Width and height of the bullet rectangle.
+            size (list[int]): Width and height of the bullet rectangle.
             bullet_speed (float): Base travel speed.
             variance (float): Random angular variance (radians).
             direction (str, optional): Movement direction ("top" or "bottom").
@@ -46,14 +47,19 @@ class Bullet(pygame.sprite.Sprite):
         super().__init__()
 
         # Create sprite surface
-        self.image = pygame.Surface(size, pygame.SRCALPHA)
-        pygame.draw.rect(self.image, color, (0, 0, size[0], size[1]))
+        self.image = pygame.Surface((5, 15), pygame.SRCALPHA)
+        pygame.draw.rect(
+            self.image,
+            color,
+            size,
+            border_top_left_radius=10,
+            border_top_right_radius=10,
+        )
         self.rect = self.image.get_rect(center=(x, y))
 
         # Float-based coordinates
         self.x: float = float(x)
         self.y: float = float(y)
-
         # Bullet angle
         base_angle = -math.pi / 2 if direction == "top" else math.pi / 2
         angle = base_angle + random.uniform(-variance, variance)
