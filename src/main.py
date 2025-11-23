@@ -1,32 +1,48 @@
-import sys
-
 import pygame
 
 pygame.init()
 
 from config import Config as config
+from game_loops import menu_loop
 from game_state import GameState
-from ui.button import Button
-from ui.menu import Menu
-from utils.helpers import scale_n_build_screen, show_fps
+from game_types import GameStateTypes
+from utils.helpers import scale_n_build_screen, show_fps, terminate
 
 
-def main(initial_state="Menu"):
+def main(initial_state: GameStateTypes = GameStateTypes.DEFAULT) -> None:
+    """Each function like menu_loop or game_loop must return an state at the end
+
+    Args:
+      initial_state:  (Default value = "Menu")
+
+    Returns:
+        None
+    """
+
     state = initial_state
 
     while True:
-        if state == "Menu":
+        if state is GameStateTypes.MENU:
             state = menu_loop()
-        elif state == "Start":
+        elif state is GameStateTypes.START:
             state = game_loop()
-        elif state in ("Quit", "Exit"):
+        elif state in (GameStateTypes.QUIT, GameStateTypes.EXIT):
             terminate()
         else:
-            # unknown state -> go to menu
-            state = "Menu"
+            state = GameStateTypes.MENU
 
 
-def update_game(state: GameState):
+def update_game(state: GameState) -> None | GameStateTypes:
+    """Runs a single frame of the game
+
+    Args:
+      state: GameState
+
+    Returns:
+      None: on successful run
+      state (str): changed state
+    """
+
     main_plane = state.player
     enemies_group = state.enemies_group
     enemies_bullets_group = state.enemies_bullets_group
@@ -39,9 +55,10 @@ def update_game(state: GameState):
     mouse = pygame.mouse.get_pressed()
     main_plane.shoot(mouse)
 
+    # ---- Effects ----
     main_plane.bullets_group.update(config.delta_time)
 
-    # ---- Enemies ----
+    # ---- Enemies AI ----
     enemies_group.update()
     for enemy in enemies_group:
         enemy.auto_move()
@@ -54,6 +71,7 @@ def update_game(state: GameState):
     hits = pygame.sprite.groupcollide(
         enemies_group, main_plane.bullets_group, False, True, pygame.sprite.collide_mask
     )
+
     for enemy, bullets in hits.items():
         enemy.take_damage(bullets, explosions_group, main_plane.gun.bullet_damage)
 
@@ -78,7 +96,7 @@ def update_game(state: GameState):
 
     # ---- Player died ----
     if not state.player_group:
-        return "Menu"
+        return GameStateTypes.MENU
 
     # ---- Draw ----
     state.player_group.draw(config.v_screen)
@@ -93,56 +111,8 @@ def update_game(state: GameState):
     return None
 
 
-def menu_loop():
-    """
-    Runs the menu frame loop and returns the next state string: "Start", "Settings", "Quit", etc.
-    """
-    # ---- Main Menu ----
-    main_menu = Menu((config.VIRTUAL_WIDTH, config.VIRTUAL_HEIGHT), (255, 255, 0))
-
-    start_button = Button("Start", (200, 50))
-    setting_button = Button("Setting", (200, 50))
-    quit_button = Button("Quit", (200, 50))
-
-    def start_button_handler():
-        return "Start"
-
-    def setting_button_handler():
-        return "Settings"
-
-    def quit_button_handler():
-        return "Quit"
-
-    start_button.handler = start_button_handler
-    setting_button.handler = setting_button_handler
-    quit_button.handler = quit_button_handler
-
-    main_menu.components = [start_button, setting_button, quit_button]
-    main_menu.center_buttons(config.v_screen_rect, gap=20)
-
-    # main menu loop
-    while True:
-        config.v_screen.fill((0, 0, 0))
-        main_menu.blits(config.v_screen)
-
-        # Event handling
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return "Quit"
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                return "Quit"
-
-            if start_button.is_clicked(event):
-                return start_button.handler()
-            if setting_button.is_clicked(event):
-                return setting_button.handler()
-            if quit_button.is_clicked(event):
-                return quit_button.handler()
-
-        scale_n_build_screen()
-
-
-def game_loop():
+def game_loop() -> GameStateTypes:
+    """Main Loop of the game, manages the update_game function gives control to the main"""
     state = GameState()  # initialize once
 
     while True:
@@ -153,21 +123,18 @@ def game_loop():
         # input events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return "Quit"
+                return GameStateTypes.QUIT
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                return "Menu"
+                return GameStateTypes.EXIT
 
         next_state = update_game(state)
+
+        # update_game returns None while the player is playing, otherwise next_state will be returned, resulting in returning to main function
         if next_state:
             return next_state
 
         show_fps()
         scale_n_build_screen()
-
-
-def terminate():
-    pygame.quit()
-    sys.exit()
 
 
 if __name__ == "__main__":

@@ -1,10 +1,16 @@
 import pygame
+
 from config import Config as config
-from entities.planes import Player
 from entities.enemy_manager import EnemyManager
-from utils.helpers import scale_image, load_image
+from entities.planes import Player
+from utils.helpers import load_image, scale_image
+
 
 class GameState:
+    """
+    Game State is a one time init class for things that need to be initialized only once, like images, groups, managers
+    """
+
     def __init__(self):
         # Player
         main_plane_img = scale_image(load_image("graphics", "plane-1.webp"), 30, 55)

@@ -4,6 +4,7 @@ from config import Config as config
 
 
 class Button:
+    """ """
     def __init__(self, text: str, size: tuple):
         self.text = text
         self.size = size
@@ -21,7 +22,14 @@ class Button:
         self.surface.blit(self.button_text, text_rect)
 
     def is_clicked(self, event):
-        """Returns True when button is clicked."""
+        """Returns True when button is clicked.
+
+        Args:
+          event: 
+
+        Returns:
+
+        """
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             # because the menu is drawn on virtual width the event.pos is not the same as button.rect positions
             mx, my = event.pos
@@ -34,4 +42,12 @@ class Button:
         return False
 
     def blit(self, surface: pygame.Surface):
+        """
+
+        Args:
+          surface: pygame.Surface: 
+
+        Returns:
+
+        """
         surface.blit(self.surface, self.rect)
