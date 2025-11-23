@@ -1,0 +1,136 @@
+{
+    "basic_plane": {
+        "1": {
+            "hp": 2,
+            "movement_speed": 1.2,
+            "collision_damage": 2,
+            "score_reward": 50,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 1,
+            "gun_type": "basic_gun",
+            "scraps": 1
+        },
+        "2": {
+            "hp": 4,
+            "movement_speed": 1.25,
+            "collision_damage": 3,
+            "score_reward": 60,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 2,
+            "gun_type": "basic_gun",
+            "scraps": 5
+        },
+        "3": {
+            "hp": 6,
+            "movement_speed": 1.3,
+            "collision_damage": 4,
+            "score_reward": 70,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 3,
+            "gun_type": "basic_gun",
+            "scraps": 10
+        },
+        "4": {
+            "hp": 8,
+            "movement_speed": 1.35,
+            "collision_damage": 5,
+            "score_reward": 80,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 4,
+            "gun_type": "basic_gun",
+            "scraps": 15
+        },
+        "5": {
+            "hp": 10,
+            "movement_speed": 1.4,
+            "collision_damage": 6,
+            "score_reward": 90,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 5,
+            "gun_type": "basic_gun",
+            "scraps": 20
+        },
+        "6": {
+            "hp": 12,
+            "movement_speed": 1.45,
+            "collision_damage": 7,
+            "score_reward": 100,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 6,
+            "gun_type": "basic_gun",
+            "scraps": 25
+        },
+        "7": {
+            "hp": 14,
+            "movement_speed": 1.5,
+            "collision_damage": 8,
+            "score_reward": 110,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 7,
+            "gun_type": "basic_gun",
+            "scraps": 30
+        },
+        "8": {
+            "hp": 16,
+            "movement_speed": 1.55,
+            "collision_damage": 9,
+            "score_reward": 125,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 8,
+            "gun_type": "basic_gun",
+            "scraps": 40
+        },
+        "9": {
+            "hp": 18,
+            "movement_speed": 1.6,
+            "collision_damage": 10,
+            "score_reward": 140,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 9,
+            "gun_type": "basic_gun",
+            "scraps": 60
+        },
+        "10": {
+            "hp": 20,
+            "movement_speed": 1.65,
+            "collision_damage": 12,
+            "score_reward": 160,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 10,
+            "gun_type": "basic_gun",
+            "scraps": 80
+        },
+        "11": {
+            "hp": 22,
+            "movement_speed": 1.7,
+            "collision_damage": 13,
+            "score_reward": 180,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 10,
+            "gun_type": "basic_gun",
+            "scraps": 90
+        },
+        "12": {
+            "hp": 24,
+            "movement_speed": 1.75,
+            "collision_damage": 14,
+            "score_reward": 200,
+            "hitbox_scale": 0.8,
+            "category": "plane",
+            "gun_level": 10,
+            "gun_type": "basic_gun",
+            "scraps": 100
+        }
+    }
+}

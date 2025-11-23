@@ -1,11 +1,13 @@
 import json
 import os
-import sys
 from typing import Tuple
 
 import pygame
 
 from config import Config as config
+from entities.guns import BasicGun
+from game_types import GunType
+from utils.utils import load_json
 
 
 def show_fps() -> None:
@@ -15,12 +17,6 @@ def show_fps() -> None:
     config.v_screen.blit(
         fps_text, (config.VIRTUAL_WIDTH * 0.9, config.VIRTUAL_HEIGHT * 0.05)
     )
-
-
-def terminate() -> None:
-    """Cleanly terminate the game and exit the program."""
-    pygame.quit()
-    sys.exit()
 
 
 def load_image(directory: str, image_name: str) -> pygame.Surface:
@@ -131,21 +127,6 @@ def get_guns() -> dict:
     return data
 
 
-def load_json(file_path) -> dict:
-    """Load and parse a JSON file.
-
-    Args:
-        file_path (Path): Path to the JSON file.
-
-    Returns:
-        dict: Parsed JSON data.
-    """
-    with file_path.open("r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    return data
-
-
 def planes_to_row_cols(
     planes_width: int, planes_count: int, spacing: int, padding: int
 ) -> Tuple[int, int]:
@@ -179,3 +160,25 @@ def planes_to_row_cols(
         rows += 1
 
     return (rows, cols)
+
+
+def load_gun(gun_type: str, gun_level: int, enemy: bool = False) -> GunType:
+    """Uses waves.json data to get the enemy level and type and loads gun data from enemy-guns.json
+
+    Args:
+      gun_type (str)
+      gun_level (int)
+      enemy (bool) = True
+
+    Returns:
+      GunType
+    """
+    if not enemy:
+        guns = load_json(config.root_dir / "src" / "data" / "player-guns.json")
+    else:
+        guns = load_json(config.root_dir / "src" / "data" / "enemy-guns.json")
+
+    gun_data = guns[gun_type][str(gun_level)]
+
+    if gun_type == "basic_gun":
+        return BasicGun(gun_level, gun_data)

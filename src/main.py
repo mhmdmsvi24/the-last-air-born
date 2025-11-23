@@ -6,7 +6,8 @@ from config import Config as config
 from game_loops import menu_loop
 from game_state import GameState
 from game_types import GameStateTypes
-from utils.helpers import scale_n_build_screen, show_fps, terminate
+from utils.helpers import scale_n_build_screen, show_fps
+from utils.utils import terminate
 
 
 def main(initial_state: GameStateTypes = GameStateTypes.DEFAULT) -> None:

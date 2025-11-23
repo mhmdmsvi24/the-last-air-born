@@ -9,7 +9,7 @@ from pygame.surface import Surface
 from config import Config as config
 from entities.animations import Explosion
 from entities.guns import BasicGun
-from utils.helpers import load_spritesheet, transparent_image
+from utils.helpers import load_gun, load_spritesheet, transparent_image
 
 
 class Plane(Sprite):
@@ -35,7 +35,7 @@ class Plane(Sprite):
         self.surface = surface
 
         # Weapons
-        self.gun = BasicGun()
+        self.gun = load_gun("basic_gun", 1)
         self.bullets_group: Group = Group()
         self.last_shot: int = pygame.time.get_ticks()
 
@@ -143,14 +143,6 @@ class Player(Plane):
 class Enemy(Plane):
     """Enemy plane with automatic movement paths and timed shooting."""
 
-    start_x: float | None
-    start_y: float | None
-    target_x: float | None
-    target_y: float | None
-    travel_duration: int
-    travel_start_time: int | None
-    reached_target: bool
-
     def __init__(
         self,
         surface: Surface,
@@ -158,9 +150,13 @@ class Enemy(Plane):
         hp: int,
         image: Surface,
         bullets_group: Group,
+        gun_type: str,
+        gun_level: int,
     ) -> None:
         super().__init__(surface, speed, hp, image)
-        self.gun = BasicGun(enemy=True)
+
+        self.gun = load_gun(gun_type, gun_level, enemy=True)
+
         self.bullets_group = bullets_group
 
         # Movement interpolation variables

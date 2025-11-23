@@ -23,6 +23,11 @@ class EnemyManager:
         self.current_wave_group: Group = pygame.sprite.Group()
         self.enemies_bullets_group: Group = enemies_bullets_group
 
+        # Enemies Type Data
+        self.enemies_type_data: dict = load_json(
+            config.root_dir / "src" / "data" / "enemy-type.json"
+        )
+
     def load_wave(self) -> None:
         """Loads and spawns the enemies for the current wave.
 
@@ -32,10 +37,18 @@ class EnemyManager:
         - each enemy’s start and target position
         """
         enemies_wave_data = self.waves_data[str(self.current_wave)]
+
         enemies_count: int = enemies_wave_data["enemies_count"]
 
-        # TEMP: Hardcoded HP for testing
-        enemies_hp: int = 1
+        enemy_type: str = enemies_wave_data["enemy_type"]
+        enemy_level: int = enemies_wave_data["enemies_level"]
+
+        # --- Loading Specific Enemy data using enemy-type.json
+        enemies_type_level: int = self.enemies_type_data[enemy_type][str(enemy_level)]
+
+        enemies_hp = enemies_type_level["hp"]
+        enemies_gun_level = enemies_type_level["gun_level"]
+        enemies_gun_type = enemies_type_level["gun_type"]
 
         # Load and rotate enemy sprite
         enemy_plane_img = pygame.transform.rotate(
@@ -73,6 +86,8 @@ class EnemyManager:
                     hp=enemies_hp,
                     image=enemy_plane_img,
                     bullets_group=self.enemies_bullets_group,
+                    gun_type=enemies_gun_type,
+                    gun_level=enemies_gun_level,
                 )
 
                 target_x = start_x + col * (enemy_plane_width + spacing)
