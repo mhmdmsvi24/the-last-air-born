@@ -2,9 +2,9 @@
     "basic_gun": {
         "1": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 0
+                "r": 180,
+                "g": 240,
+                "b": 255
             },
             "size": [
                 0,
@@ -12,16 +12,16 @@
                 1,
                 6
             ],
-            "speed": 67,
-            "delay": 3000,
+            "speed": 34,
+            "delay": 21000,
             "damage": 1,
-            "velocity_variance": 0.075
+            "velocity_variance": 0.0375
         },
         "2": {
             "color": {
-                "r": 255,
-                "g": 240,
-                "b": 60
+                "r": 160,
+                "g": 225,
+                "b": 250
             },
             "size": [
                 0,
@@ -29,16 +29,16 @@
                 1,
                 7
             ],
-            "speed": 72,
-            "delay": 2850,
+            "speed": 36,
+            "delay": 20000,
             "damage": 1,
-            "velocity_variance": 0.075
+            "velocity_variance": 0.0375
         },
         "3": {
             "color": {
-                "r": 255,
-                "g": 220,
-                "b": 50
+                "r": 140,
+                "g": 210,
+                "b": 245
             },
             "size": [
                 0,
@@ -46,16 +46,16 @@
                 1,
                 8
             ],
-            "speed": 77,
-            "delay": 2700,
-            "damage": 2,
-            "velocity_variance": 0.0775
+            "speed": 39,
+            "delay": 19000,
+            "damage": 1,
+            "velocity_variance": 0.03875
         },
         "4": {
             "color": {
-                "r": 255,
-                "g": 200,
-                "b": 40
+                "r": 120,
+                "g": 195,
+                "b": 240
             },
             "size": [
                 0,
@@ -63,16 +63,16 @@
                 1,
                 9
             ],
-            "speed": 82,
-            "delay": 2550,
-            "damage": 2,
-            "velocity_variance": 0.08
+            "speed": 41,
+            "delay": 18000,
+            "damage": 1,
+            "velocity_variance": 0.04
         },
         "5": {
             "color": {
-                "r": 255,
+                "r": 100,
                 "g": 180,
-                "b": 30
+                "b": 235
             },
             "size": [
                 0,
@@ -80,16 +80,16 @@
                 1,
                 10
             ],
-            "speed": 87,
-            "delay": 2400,
-            "damage": 3,
-            "velocity_variance": 0.08
+            "speed": 44,
+            "delay": 17000,
+            "damage": 2,
+            "velocity_variance": 0.04
         },
         "6": {
             "color": {
-                "r": 255,
-                "g": 140,
-                "b": 25
+                "r": 80,
+                "g": 165,
+                "b": 230
             },
             "size": [
                 0,
@@ -97,16 +97,16 @@
                 1,
                 11
             ],
-            "speed": 92,
-            "delay": 2250,
-            "damage": 3,
-            "velocity_variance": 0.08
+            "speed": 46,
+            "delay": 16000,
+            "damage": 2,
+            "velocity_variance": 0.04
         },
         "7": {
             "color": {
-                "r": 255,
-                "g": 110,
-                "b": 20
+                "r": 60,
+                "g": 150,
+                "b": 225
             },
             "size": [
                 0,
@@ -114,16 +114,16 @@
                 1,
                 12
             ],
-            "speed": 97,
-            "delay": 2100,
-            "damage": 4,
-            "velocity_variance": 0.08
+            "speed": 49,
+            "delay": 15000,
+            "damage": 2,
+            "velocity_variance": 0.04
         },
         "8": {
             "color": {
-                "r": 255,
-                "g": 80,
-                "b": 15
+                "r": 40,
+                "g": 135,
+                "b": 220
             },
             "size": [
                 0,
@@ -131,16 +131,16 @@
                 2,
                 13
             ],
-            "speed": 102,
-            "delay": 1950,
-            "damage": 4,
-            "velocity_variance": 0.0825
+            "speed": 51,
+            "delay": 14000,
+            "damage": 2,
+            "velocity_variance": 0.04125
         },
         "9": {
             "color": {
-                "r": 255,
-                "g": 50,
-                "b": 10
+                "r": 30,
+                "g": 120,
+                "b": 210
             },
             "size": [
                 0,
@@ -148,16 +148,16 @@
                 2,
                 9
             ],
-            "speed": 107,
-            "delay": 1800,
-            "damage": 5,
-            "velocity_variance": 0.085
+            "speed": 54,
+            "delay": 13000,
+            "damage": 3,
+            "velocity_variance": 0.0425
         },
         "10": {
             "color": {
-                "r": 255,
-                "g": 20,
-                "b": 5
+                "r": 20,
+                "g": 100,
+                "b": 200
             },
             "size": [
                 0,
@@ -165,10 +165,10 @@
                 2,
                 10
             ],
-            "speed": 112,
-            "delay": 1650,
-            "damage": 5,
-            "velocity_variance": 0.0875
+            "speed": 56,
+            "delay": 11500,
+            "damage": 3,
+            "velocity_variance": 0.04375
         }
     }
 }
