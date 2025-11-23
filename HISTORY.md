@@ -1,15 +1,28 @@
 # 📌 **CHANGELOG**:
 > [!Note]: Latest updates are added to top of the file (newer to oldest)
 
-## **v0.2.6 - 2025-11-23**
+## **v0.2.9 - 2025-11-23**
+
+* Separated utils and helpers
+* Base Plane & Guns classes
+
+### Changed
+
+* Better Enemy Manger
 
 ### **Refactored**
 
 * Documentation
+* entities data
 
 ### **Added**
 
 * Type Annotations
+* Enemy types data for future features
+
+### Fixed
+
+* enemy bullets visuals
 
 ## **v0.2.5 — 2025-11-21**
 

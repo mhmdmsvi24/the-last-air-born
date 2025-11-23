@@ -1,9 +1,7 @@
 import math
 from typing import Tuple
 
-from config import Config as config
 from entities.bullets import Bullet
-from utils.helpers import load_json
 
 
 class BasicGun:
@@ -18,7 +16,7 @@ class BasicGun:
     bullet_velocity_variance: float
     bullet_speed: float
 
-    def __init__(self, enemy: bool = False) -> None:
+    def __init__(self, gun_level: int, gun_data: dict) -> None:
         """
         Initialize the basic gun and load weapon stats.
 
@@ -26,30 +24,24 @@ class BasicGun:
             enemy (bool): Whether this gun belongs to an enemy.
                 Enemy guns shoot slower, weaker, and slower-speed bullets.
         """
-        self.gun_level = 10
-
-        if not enemy:
-            gun_data = load_json(config.root_dir / "src" / "data" / "player-guns.json")
-        else:
-            gun_data = load_json(config.root_dir / "src" / "data" / "enemy-guns.json")
-
-        self.current_gun = gun_data["basic_gun"][str(self.gun_level)]
+        self.gun_level = gun_level
+        self.gun_data = gun_data
 
         # Bullet color (RGB)
         self.bullet_color = (
-            self.current_gun["color"]["r"],
-            self.current_gun["color"]["g"],
-            self.current_gun["color"]["b"],
+            self.gun_data["color"]["r"],
+            self.gun_data["color"]["g"],
+            self.gun_data["color"]["b"],
         )
 
         # Core bullet attributes
-        self.bullet_size = self.current_gun["size"]
-        self.bullet_velocity_variance = float(self.current_gun["velocity_variance"])
+        self.bullet_size = self.gun_data["size"]
+        self.bullet_velocity_variance = float(self.gun_data["velocity_variance"])
 
         # Gun behavior varies if used by an enemy
-        self.shooting_delay = int(self.current_gun["delay"])
-        self.bullet_damage = int(self.current_gun["damage"])
-        self.bullet_speed = float(self.current_gun["speed"])
+        self.shooting_delay = int(self.gun_data["delay"])
+        self.bullet_damage = int(self.gun_data["damage"])
+        self.bullet_speed = float(self.gun_data["speed"])
 
     def create_bullet(
         self, shooting_pos: Tuple[int, int], direction: str = "top"

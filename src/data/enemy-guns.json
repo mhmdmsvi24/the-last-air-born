@@ -13,7 +13,7 @@
                 6
             ],
             "speed": 34,
-            "delay": 21000,
+            "delay": 10500.0,
             "damage": 1,
             "velocity_variance": 0.0375
         },
@@ -30,7 +30,7 @@
                 7
             ],
             "speed": 36,
-            "delay": 20000,
+            "delay": 10000.0,
             "damage": 1,
             "velocity_variance": 0.0375
         },
@@ -47,7 +47,7 @@
                 8
             ],
             "speed": 39,
-            "delay": 19000,
+            "delay": 9500.0,
             "damage": 1,
             "velocity_variance": 0.03875
         },
@@ -64,7 +64,7 @@
                 9
             ],
             "speed": 41,
-            "delay": 18000,
+            "delay": 9000.0,
             "damage": 1,
             "velocity_variance": 0.04
         },
@@ -81,7 +81,7 @@
                 10
             ],
             "speed": 44,
-            "delay": 17000,
+            "delay": 8500.0,
             "damage": 2,
             "velocity_variance": 0.04
         },
@@ -98,7 +98,7 @@
                 11
             ],
             "speed": 46,
-            "delay": 16000,
+            "delay": 8000.0,
             "damage": 2,
             "velocity_variance": 0.04
         },
@@ -115,7 +115,7 @@
                 12
             ],
             "speed": 49,
-            "delay": 15000,
+            "delay": 7500.0,
             "damage": 2,
             "velocity_variance": 0.04
         },
@@ -132,7 +132,7 @@
                 13
             ],
             "speed": 51,
-            "delay": 14000,
+            "delay": 7000.0,
             "damage": 2,
             "velocity_variance": 0.04125
         },
@@ -149,7 +149,7 @@
                 9
             ],
             "speed": 54,
-            "delay": 13000,
+            "delay": 6500.0,
             "damage": 3,
             "velocity_variance": 0.0425
         },
@@ -166,7 +166,7 @@
                 10
             ],
             "speed": 56,
-            "delay": 11500,
+            "delay": 5750.0,
             "damage": 3,
             "velocity_variance": 0.04375
         }
